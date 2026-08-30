@@ -1,12 +1,38 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from app.core.config import settings
+from app.db.base import Base
+from app.db.session import engine
+from app.api.v1.router import api_router
+import app.models  # Registers all models with Base.metadata
+
+# Automatically create tables in PostgreSQL on startup
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
-    title="Student Management System",
-    version="1.0.0"
+    title=settings.PROJECT_NAME,
+    version="1.0.0",
+    openapi_url=f"{settings.API_V1_STR}/openapi.json"
 )
+
+# CORS middleware
+if settings.BACKEND_CORS_ORIGINS:
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=settings.BACKEND_CORS_ORIGINS,
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
+# Include all v1 API routes
+app.include_router(api_router, prefix=settings.API_V1_STR)
+
 
 @app.get("/")
 def root():
     return {
-        "message": "Student Management System API"
+        "message": "Welcome to Student Management System API",
+        "docs_url": "/docs",
+        "version": "1.0.0"
     }

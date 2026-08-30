@@ -14,9 +14,7 @@ class EnrollmentStatus(str, Enum):
     PENDING = "pending"
 
 
-# ==========================================
-# 📥 REQUEST SCHEMAS
-# ==========================================
+
 
 class EnrollmentBase(BaseModel):
     student_id: int = Field(..., description="ID of the student")
@@ -36,9 +34,7 @@ class EnrollmentUpdate(BaseModel):
     grade: Optional[str] = Field(None, max_length=10)
 
 
-# ==========================================
-# 📤 RESPONSE SCHEMAS
-# ==========================================
+
 
 class EnrollmentResponse(BaseSchema, TimestampSchema):
     """Standard enrollment response."""
