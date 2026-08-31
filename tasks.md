@@ -10,8 +10,8 @@ This task roadmap divides the entire project into small, actionable, step-by-ste
 | :---: | :--- | :---: |
 | **Phase 1** | Foundation (Models, Schemas, Config, DB Session) | 🟢 **Done** |
 | **Phase 2** | Authentication & Security (JWT, Password Hashing, User Repo, Auth Service, Endpoints) | 🟢 **Done** |
-| **Phase 3** | Student Module (Repository, Service, Endpoints) | 🟡 **Next Up** |
-| **Phase 4** | Teacher Module (Repository, Service, Endpoints) | ⚪ Pending |
+| **Phase 3** | Student Module (Repository, Service, Endpoints) | 🟢 **Done** |
+| **Phase 4** | Teacher Module (Repository, Service, Endpoints) | 🟡 **Next Up** |
 | **Phase 5** | Course Module (Repository, Service, Endpoints) | ⚪ Pending |
 | **Phase 6** | Enrollment & Grading Module | ⚪ Pending |
 | **Phase 7** | Search, Filters & Pagination Utilities | ⚪ Pending |
@@ -42,17 +42,17 @@ This task roadmap divides the entire project into small, actionable, step-by-ste
 
 ---
 
-### **PHASE 3: Student Module** 🟡 (NEXT)
+### **PHASE 3: Student Module** 🟢 (COMPLETED)
 > **Goal**: Allow Admins to manage student records, and Students to view their personal profile.
 
-- [ ] **Task 3.1: Student Repository** (`app/repositories/student_repository.py`)
-- [ ] **Task 3.2: Student Service** (`app/services/student_service.py`)
-- [ ] **Task 3.3: Student Endpoints** (`app/api/v1/endpoints/students.py`)
-- [ ] **Task 3.4: Register in `app/api/v1/router.py`**
+- [x] **Task 3.1: Student Repository** (`app/repositories/student_repository.py`)
+- [x] **Task 3.2: Student Service** (`app/services/student_service.py`)
+- [x] **Task 3.3: Student Endpoints** (`app/api/v1/endpoints/students.py`)
+- [x] **Task 3.4: Register in `app/api/v1/router.py`**
 
 ---
 
-### **PHASE 4: Teacher Module** ⚪
+### **PHASE 4: Teacher Module** 🟡 (NEXT)
 - [ ] **Task 4.1: Teacher Repository** (`app/repositories/teacher_repository.py`)
 - [ ] **Task 4.2: Teacher Service** (`app/services/teacher_service.py`)
 - [ ] **Task 4.3: Teacher Endpoints** (`app/api/v1/endpoints/teachers.py`)

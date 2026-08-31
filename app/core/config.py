@@ -4,7 +4,6 @@ from pydantic_settings import BaseSettings,SettingsConfigDict
 # BaseSettings: A Pydantic class that automatically 
 # reads values from your .env file or operating system environment variables.
 
-# SettingsConfigDict: Tells Pydantic how and where to read the configuration file.
 
 class Settings(BaseSettings):
     #App information
@@ -22,6 +21,12 @@ class Settings(BaseSettings):
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
     REFRESH_TOKEN_EXPIRE_DAYS: int = 7
+
+    # Default Super Admin Seed Credentials
+    FIRST_SUPERUSER_EMAIL: str = "admin@sms.com"
+    FIRST_SUPERUSER_USERNAME: str = "admin"
+    FIRST_SUPERUSER_PASSWORD: str = "Admin@12345"
+
     # CORS
     BACKEND_CORS_ORIGINS: List[str] = ["*"]
     # Load variables from .env

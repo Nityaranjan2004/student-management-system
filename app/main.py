@@ -1,13 +1,29 @@
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
 from app.db.base import Base
-from app.db.session import engine
+from app.db.session import engine, SessionLocal
+from app.db.init_db import init_db
 from app.api.v1.router import api_router
 import app.models  # Registers all models with Base.metadata
 
-# Automatically create tables in PostgreSQL on startup
-Base.metadata.create_all(bind=engine)
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Lifespan context manager: handles startup and shutdown events."""
+    # 1. Create tables in PostgreSQL on startup
+    Base.metadata.create_all(bind=engine)
+    
+    # 2. Seed default Admin user
+    db = SessionLocal()
+    try:
+        init_db(db)
+    finally:
+        db.close()
+        
+    yield  # App runs while paused here
+
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
